@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient({log:["query"]});
+const prisma = new PrismaClient({ log: ["query"] });
 
 async function main() {
   // await prisma.user.deleteMany();
@@ -36,13 +36,20 @@ async function main() {
   //     }
   //   }
   // });
-const user = await prisma.user.findFirst({
-  where:{
-    name:"kennedy"
-  }
-});
-
-  console.log(user)
+  // const user = await prisma.user.findFirst({
+  //   where:{
+  //     name:"kennedy"
+  //   }
+  // });
+  const user = await prisma.user.update({
+    where:{
+      email:"muth@gmail.com"
+    },
+    data:{
+      email:"muthuri@gmail.com"
+    }
+  });
+    console.log(user);
 }
 
 main()
